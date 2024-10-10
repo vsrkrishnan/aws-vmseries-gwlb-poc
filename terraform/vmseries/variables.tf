@@ -24,7 +24,6 @@ variable "management-vpc-subnets" { default = [] }
 variable "management-vpc-route-tables" { default = [] }
 variable "management-vpc-security-groups" { default = [] }
 variable "management-vpc-routes" { default = [] }
-variable "panorama" { default = {} }
 
 variable "fw_version" { default = "" }
 variable "fw_product_code" { default = [] }
@@ -46,3 +45,4 @@ variable "global_tags"      { default = {} }
 variable "access-key"       { default = "" }
 variable "secret-key"       { default = "" }
 variable "region"           { default = "" }
+variable "ssh-key-name"     { default = "" }
