@@ -178,8 +178,8 @@ transit-gateway-routes = {
   }
 }
 
-fw_version = "10.2.1"
-fw_product_code = ["hd44w1chf26uv4p52cdynb2o"]
+fw_version = "11.1.4"
+fw_product_code = ["6njl1pau431dv1qxipg63mvah"] #["hd44w1chf26uv4p52cdynb2o"]
 
 firewalls = [
   {

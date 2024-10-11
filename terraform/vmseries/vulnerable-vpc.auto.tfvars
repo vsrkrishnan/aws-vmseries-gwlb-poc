@@ -65,22 +65,22 @@ vulnerable-vpc-instances = [
 ]
 
 vulnerable-vpc-routes = {
-  vul-edge-gwlbe = {
-    name          = "edge-gwlbe"
-    vpc_name      = "vul-vpc"
-    route_table   = "igw-rt"
-    prefix        = "10.1.1.0/24"
-    next_hop_type = "gateway_load_balancer_endpoint"
-    next_hop_name = "gwlbe"
-  },
-  vul-gwlbe-out = {
-    name          = "gwlbe-out"
-    vpc_name      = "vul-vpc"
-    route_table   = "gwlbe-rt"
-    prefix        = "0.0.0.0/0"
-    next_hop_type = "internet_gateway"
-    next_hop_name = "igw"
-  },
+  # vul-edge-gwlbe = {
+  #   name          = "edge-gwlbe"
+  #   vpc_name      = "vul-vpc"
+  #   route_table   = "igw-rt"
+  #   prefix        = "10.1.1.0/24"
+  #   next_hop_type = "gateway_load_balancer_endpoint"
+  #   next_hop_name = "gwlbe"
+  # },
+  # vul-gwlbe-out = {
+  #   name          = "gwlbe-out"
+  #   vpc_name      = "vul-vpc"
+  #   route_table   = "gwlbe-rt"
+  #   prefix        = "0.0.0.0/0"
+  #   next_hop_type = "internet_gateway"
+  #   next_hop_name = "igw"
+  # },
   vul-app-tgw = {
     name          = "app-tgw"
     vpc_name      = "vul-vpc"
@@ -94,7 +94,7 @@ vulnerable-vpc-routes = {
     vpc_name      = "vul-vpc"
     route_table   = "rt"
     prefix        = "0.0.0.0/0"
-    next_hop_type = "gateway_load_balancer_endpoint"
-    next_hop_name = "gwlbe"
+    next_hop_type = "internet_gateway"  #"gateway_load_balancer_endpoint"
+    next_hop_name = "igw"  #"gwlbe"
   }
 }

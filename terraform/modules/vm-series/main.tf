@@ -2,7 +2,7 @@
 locals {
 
   bootstrap_params = {
-    "vmseries-bootstrap-aws-s3bucket" = aws_s3_bucket.bootstrap_bucket_ngfw.id
+    #"vmseries-bootstrap-aws-s3bucket" = aws_s3_bucket.bootstrap_bucket_ngfw.id
   }
 
   bootstrap_options = merge(var.bootstrap_options, local.bootstrap_params)
@@ -25,116 +25,116 @@ data "aws_ami" "pa-vm" {
 
 data "aws_region" "current" {}
 
-data "aws_service" "s3" {
-  region = data.aws_region.current.name
-  service_id = "s3"
-}
+# data "aws_service" "s3" {
+#   region = data.aws_region.current.name
+#   service_id = "s3"
+# }
 
-resource "random_string" "randomstring" {
-  length      = 25
-  min_lower   = 15
-  min_numeric = 10
-  special     = false
-}
+# resource "random_string" "randomstring" {
+#   length      = 25
+#   min_lower   = 15
+#   min_numeric = 10
+#   special     = false
+# }
 
-resource "aws_s3_bucket" "bootstrap_bucket_ngfw" {
-  bucket        = "${join("", tolist(["aws-gwlb-vm-series-bootstrap", "-", random_string.randomstring.result]))}"
-  acl           = "private"
-  force_destroy = true
-}
+# resource "aws_s3_bucket" "bootstrap_bucket_ngfw" {
+#   bucket        = "${join("", tolist(["aws-gwlb-vm-series-bootstrap", "-", random_string.randomstring.result]))}"
+#   acl           = "private"
+#   force_destroy = true
+# }
 
-resource "aws_vpc_endpoint" "s3" {
-  vpc_id = var.vpc_id
-  service_name = data.aws_service.s3.reverse_dns_name
-}
+# resource "aws_vpc_endpoint" "s3" {
+#   vpc_id = var.vpc_id
+#   service_name = data.aws_service.s3.reverse_dns_name
+# }
 
-resource "aws_vpc_endpoint_route_table_association" "s3" {
-  route_table_id = var.route_table_ids["${var.vpc_name}-ngfw-mgmt-rt"]
-  vpc_endpoint_id = aws_vpc_endpoint.s3.id
-}
+# resource "aws_vpc_endpoint_route_table_association" "s3" {
+#   route_table_id = var.route_table_ids["${var.vpc_name}-ngfw-mgmt-rt"]
+#   vpc_endpoint_id = aws_vpc_endpoint.s3.id
+# }
 
-resource "aws_s3_bucket_object" "bootstrap_xml" {
-  bucket = aws_s3_bucket.bootstrap_bucket_ngfw.id
-  acl    = "private"
-  key    = "config/bootstrap.xml"
-  source = "../modules/bootstrap_files/bootstrap.xml"
-}
+# resource "aws_s3_bucket_object" "bootstrap_xml" {
+#   bucket = aws_s3_bucket.bootstrap_bucket_ngfw.id
+#   acl    = "private"
+#   key    = "config/bootstrap.xml"
+#   source = "../modules/bootstrap_files/bootstrap.xml"
+# }
 
-resource "aws_s3_bucket_object" "init-cft_txt" {
-  bucket = aws_s3_bucket.bootstrap_bucket_ngfw.id
-  acl    = "private"
-  key    = "config/init-cfg.txt"
-  source = "../modules/bootstrap_files/init-cfg.txt"
-}
+# resource "aws_s3_bucket_object" "init-cft_txt" {
+#   bucket = aws_s3_bucket.bootstrap_bucket_ngfw.id
+#   acl    = "private"
+#   key    = "config/init-cfg.txt"
+#   source = "../modules/bootstrap_files/init-cfg.txt"
+# }
 
-resource "aws_s3_bucket_object" "software" {
-  bucket = aws_s3_bucket.bootstrap_bucket_ngfw.id
-  acl    = "private"
-  key    = "software/"
-  source = "/dev/null"
-}
+# resource "aws_s3_bucket_object" "software" {
+#   bucket = aws_s3_bucket.bootstrap_bucket_ngfw.id
+#   acl    = "private"
+#   key    = "software/"
+#   source = "/dev/null"
+# }
 
-resource "aws_s3_bucket_object" "license" {
-  bucket = aws_s3_bucket.bootstrap_bucket_ngfw.id
-  acl    = "private"
-  key    = "license/authcodes"
-  source = "/dev/null"
-}
+# resource "aws_s3_bucket_object" "license" {
+#   bucket = aws_s3_bucket.bootstrap_bucket_ngfw.id
+#   acl    = "private"
+#   key    = "license/authcodes"
+#   source = "/dev/null"
+# }
 
-resource "aws_s3_bucket_object" "content" {
-  bucket = aws_s3_bucket.bootstrap_bucket_ngfw.id
-  acl    = "private"
-  key    = "content/"
-  source = "/dev/null"
-}
+# resource "aws_s3_bucket_object" "content" {
+#   bucket = aws_s3_bucket.bootstrap_bucket_ngfw.id
+#   acl    = "private"
+#   key    = "content/"
+#   source = "/dev/null"
+# }
 
-resource "aws_iam_role" "bootstrap_role" {
-  name = "ngfw_bootstrap_role"
+# resource "aws_iam_role" "bootstrap_role" {
+#   name = "ngfw_bootstrap_role"
 
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-      "Service": "ec2.amazonaws.com"
-    },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-EOF
-}
+#   assume_role_policy = <<EOF
+# {
+#   "Version": "2012-10-17",
+#   "Statement": [
+#     {
+#       "Effect": "Allow",
+#       "Principal": {
+#       "Service": "ec2.amazonaws.com"
+#     },
+#       "Action": "sts:AssumeRole"
+#     }
+#   ]
+# }
+# EOF
+# }
 
-resource "aws_iam_role_policy" "bootstrap_policy" {
-  name = "ngfw_bootstrap_policy"
-  role = "${aws_iam_role.bootstrap_role.id}"
+# resource "aws_iam_role_policy" "bootstrap_policy" {
+#   name = "ngfw_bootstrap_policy"
+#   role = "${aws_iam_role.bootstrap_role.id}"
 
-  policy = <<EOF
-{
-  "Version" : "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": "s3:ListBucket",
-      "Resource": "arn:aws:s3:::${aws_s3_bucket.bootstrap_bucket_ngfw.id}"
-    },
-    {
-      "Effect": "Allow",
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::${aws_s3_bucket.bootstrap_bucket_ngfw.id}/*"
-    }
-  ]
-}
-EOF
-}
+#   policy = <<EOF
+# {
+#   "Version" : "2012-10-17",
+#   "Statement": [
+#     {
+#       "Effect": "Allow",
+#       "Action": "s3:ListBucket",
+#       "Resource": "arn:aws:s3:::${aws_s3_bucket.bootstrap_bucket_ngfw.id}"
+#     },
+#     {
+#       "Effect": "Allow",
+#       "Action": "s3:GetObject",
+#       "Resource": "arn:aws:s3:::${aws_s3_bucket.bootstrap_bucket_ngfw.id}/*"
+#     }
+#   ]
+# }
+# EOF
+# }
 
-resource "aws_iam_instance_profile" "bootstrap_profile" {
-  name = "ngfw_bootstrap_profile"
-  role = aws_iam_role.bootstrap_role.name
-  path = "/"
-}
+# resource "aws_iam_instance_profile" "bootstrap_profile" {
+#   name = "ngfw_bootstrap_profile"
+#   role = aws_iam_role.bootstrap_role.name
+#   path = "/"
+# }
 
 resource "aws_network_interface" "this" {
   for_each = { for interface in var.fw_interfaces: interface.name => interface }
