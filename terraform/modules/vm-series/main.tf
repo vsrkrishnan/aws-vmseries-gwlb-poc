@@ -157,7 +157,7 @@ resource "aws_instance" "vm-series" {
   ami                   = data.aws_ami.pa-vm.id
   instance_type         = each.value.instance_type
   ebs_optimized         = true
-  iam_instance_profile  = aws_iam_instance_profile.bootstrap_profile.id
+  #iam_instance_profile  = aws_iam_instance_profile.bootstrap_profile.id
 
   tags          = merge({ Name = "${var.prefix-name-tag}${each.value.name}" }, var.global_tags)
 
