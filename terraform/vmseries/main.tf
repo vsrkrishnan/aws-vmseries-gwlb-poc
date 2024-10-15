@@ -7,6 +7,7 @@ module "vulnerable-vpc" {
     route-tables     = var.vulnerable-vpc-route-tables
     security-groups  = var.vulnerable-vpc-security-groups
     ec2-instances    = var.vulnerable-vpc-instances
+    ssh-key-name     = var.ssh-key-name
     global_tags      = var.global_tags
 }
 
@@ -18,6 +19,7 @@ module "attack-vpc" {
     route-tables    = var.attack-vpc-route-tables
     ec2-instances   = var.attack-vpc-instances
     security-groups = var.attack-vpc-security-groups
+    ssh-key-name    = var.ssh-key-name
     global_tags     = var.global_tags
 }
 
@@ -29,6 +31,7 @@ module "security-vpc" {
     route-tables    = var.security-vpc-route-tables
     security-groups = var.security-vpc-security-groups
     nat_gateways    = var.nat_gateways
+    ssh-key-name    = var.ssh-key-name
     global_tags     = var.global_tags
 }
 

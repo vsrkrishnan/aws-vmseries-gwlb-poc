@@ -154,7 +154,7 @@ data "aws_ami" "latest_ecs" {
 data "aws_key_pair" "key_name" {
   filter {
     name = "key-name"
-    values = ["qwikLABS-*"]
+    values = [var.ssh-key-name]
   }
 }
 
