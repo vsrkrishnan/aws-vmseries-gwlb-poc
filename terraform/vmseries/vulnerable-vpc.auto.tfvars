@@ -32,11 +32,6 @@ vulnerable-vpc-security-groups = [
       {
         description = "Permit All Internal traffic"
         type        = "ingress", from_port = "0", to_port = "0", protocol = "-1"
-        cidr_blocks = ["0.0.0.0/0"]
-      },
-      {
-        description = "Permit Port 8080"
-        type        = "ingress", from_port = "8080", to_port = "8080", protocol = "tcp"
         cidr_blocks = ["10.2.0.0/16"]
       },
       {
@@ -48,6 +43,11 @@ vulnerable-vpc-security-groups = [
         description = "Permit ICMP Public"
         type        = "ingress", from_port = "0", to_port = "0", protocol = "icmp"
         cidr_blocks = ["10.2.0.0/16"]
+      },
+      {
+        description = "Permit RDP Public"
+        type        = "ingress", from_port = "0", to_port = "0", protocol = "rdp"
+        cidr_blocks = ["0.0.0.0/0"]
       }
     ]
   }

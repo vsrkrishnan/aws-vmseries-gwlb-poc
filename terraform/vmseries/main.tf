@@ -11,6 +11,12 @@ module "vulnerable-vpc" {
     global_tags      = var.global_tags
 }
 
+module "windows-vm" {
+  source            = "../modules/windows-vm"
+  windows-subnet-id = module.vulnerable-vpc.subnet_ids["${module.vulnerable-vpc.vpc_name}-subnet"]
+  windows-sg-id     = module.vulnerable-vpc.security_groups["${var.prefix-name-tag}-vul-svr-sg"]
+}
+
 module "attack-vpc" {
     source          = "../modules/vpc"
     vpc             = var.attack-vpc

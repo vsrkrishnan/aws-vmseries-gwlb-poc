@@ -61,11 +61,6 @@ attack-vpc-security-groups = [
       {
         description = "Permit All Internal traffic"
         type        = "ingress", from_port = "0", to_port = "0", protocol = "-1"
-        cidr_blocks = ["0.0.0.0/0"]
-      },
-      {
-        description = "Permit Port 1389"
-        type        = "ingress", from_port = "1389", to_port = "1389", protocol = "tcp"
         cidr_blocks = ["10.1.0.0/16"]
       },
       {
