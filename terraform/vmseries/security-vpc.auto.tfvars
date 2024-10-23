@@ -184,7 +184,7 @@ fw_product_code = ["6njl1pau431dv1qxipg63mvah"] #["hd44w1chf26uv4p52cdynb2o"]
 firewalls = [
   {
     name              = "vmseries01"
-    instance_type     = "m5.xlarge"
+    instance_type     = "m5.large"
     bootstrap_options = { "hostname" = "vmseries01" }
     interfaces = [
       { name = "vmseries01-data", index = "0" },
