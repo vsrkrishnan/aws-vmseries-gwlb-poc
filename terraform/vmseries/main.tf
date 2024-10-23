@@ -15,6 +15,7 @@ module "windows-vm" {
   source            = "../modules/windows-vm"
   windows-subnet-id = module.vulnerable-vpc.subnet_ids["${module.vulnerable-vpc.vpc_name}-subnet"]
   windows-sg-id     = module.vulnerable-vpc.security_groups["${var.prefix-name-tag}-vul-svr-sg"]
+  windows-vpc-id    = module.vulnerable-vpc.vpc_id
 }
 
 module "attack-vpc" {

@@ -41,6 +41,7 @@ variable "windows_instance_name" {
   default     = "tfwinsrv01"
 }
 
+variable "windows-vpc-id"       { default = "" }
 variable "windows-subnet-id"    { default = "" }
 variable "ssh_key_name"         { default = "" }
 variable "windows-sg-id"        { default = "" }

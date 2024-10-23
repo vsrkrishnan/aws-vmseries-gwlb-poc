@@ -56,12 +56,12 @@ resource "aws_instance" "windows-server" {
     delete_on_termination = true
   }
   
-  tags = merge({ Name = "${var.prefix-name-tag}-${windows_instance_name}" }, var.global_tags)
+  tags = merge({ Name = "${var.prefix-name-tag}-${var.windows_instance_name}" }, var.global_tags)
 }
 
 # Create Elastic IP for the EC2 instance
 resource "aws_eip" "windows-eip" {
-  vpc  = true
+  # vpc  = true
   tags = merge({ Name = "${var.prefix-name-tag}-windows-eip" }, var.global_tags)
 }
 
@@ -75,7 +75,7 @@ resource "aws_eip_association" "windows-eip-association" {
 resource "aws_security_group" "aws-windows-sg" {
   name        = "${var.prefix-name-tag}-windows-sg"
   description = "Allow incoming connections"
-  vpc_id      = aws_vpc.vpc.id
+  vpc_id      = var.windows-vpc-id
 
   ingress {
     from_port   = 80
