@@ -56,13 +56,13 @@ resource "aws_instance" "windows-server" {
     delete_on_termination = true
   }
   
-  tags = merge({ Name = "${var.prefix-name-tag}-${var.windows_instance_name}" }, var.global_tags)
+  tags = merge({ Name = "${var.prefix-name-tag}${var.windows_instance_name}" }, var.global_tags)
 }
 
 # Create Elastic IP for the EC2 instance
 resource "aws_eip" "windows-eip" {
   # vpc  = true
-  tags = merge({ Name = "${var.prefix-name-tag}-windows-eip" }, var.global_tags)
+  tags = merge({ Name = "${var.prefix-name-tag}windows-eip" }, var.global_tags)
 }
 
 # Associate Elastic IP to Windows Server
