@@ -46,7 +46,7 @@ vulnerable-vpc-security-groups = [
       },
       {
         description = "Permit RDP Public"
-        type        = "ingress", from_port = "0", to_port = "0", protocol = "rdp"
+        type        = "ingress", from_port = "3389", to_port = "3389", protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
       }
     ]
