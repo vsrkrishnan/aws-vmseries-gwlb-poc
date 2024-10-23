@@ -16,6 +16,9 @@ module "windows-vm" {
   windows-subnet-id = module.vulnerable-vpc.subnet_ids["${module.vulnerable-vpc.vpc_name}-subnet"]
   windows-sg-id     = module.vulnerable-vpc.security_groups["${var.prefix-name-tag}vul-svr-sg"]
   windows-vpc-id    = module.vulnerable-vpc.vpc_id
+  ssh_key_name      = var.ssh-key-name
+  prefix-name-tag   = var.prefix-name-tag
+  global_tags       = var.global_tags
 }
 
 module "attack-vpc" {
