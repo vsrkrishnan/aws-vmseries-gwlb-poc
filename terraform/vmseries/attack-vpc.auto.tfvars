@@ -44,8 +44,8 @@ attack-vpc-routes = {
     vpc_name      = "att-vpc"
     route_table   = "rt"
     prefix        = "0.0.0.0/0"
-    next_hop_type = "gateway_load_balancer_endpoint"
-    next_hop_name = "igw"  #"gwlbe"
+    next_hop_type = "internet_gateway"      #"gateway_load_balancer_endpoint"
+    next_hop_name = "igw"   #"gwlbe"
   }
 }
 
