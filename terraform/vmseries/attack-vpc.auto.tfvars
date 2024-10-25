@@ -15,22 +15,22 @@ attack-vpc-route-tables = [
 ]
 
 attack-vpc-routes = {
-  att-edge-gwlbe = {
-    name          = "att-edge-gwlbe"
-    vpc_name      = "att-vpc"
-    route_table   = "igw-rt"
-    prefix        = "10.2.1.0/24"
-    next_hop_type = "gateway_load_balancer_endpoint"
-    next_hop_name = "gwlbe"
-  },
-  att-gwlbe-out = {
-    name          = "att-gwlbe-out"
-    vpc_name      = "att-vpc"
-    route_table   = "gwlbe-rt"
-    prefix        = "0.0.0.0/0"
-    next_hop_type = "internet_gateway"
-    next_hop_name = "igw"
-  },
+  # att-edge-gwlbe = {
+  #   name          = "att-edge-gwlbe"
+  #   vpc_name      = "att-vpc"
+  #   route_table   = "igw-rt"
+  #   prefix        = "10.2.1.0/24"
+  #   next_hop_type = "gateway_load_balancer_endpoint"
+  #   next_hop_name = "gwlbe"
+  # },
+  # att-gwlbe-out = {
+  #   name          = "att-gwlbe-out"
+  #   vpc_name      = "att-vpc"
+  #   route_table   = "gwlbe-rt"
+  #   prefix        = "0.0.0.0/0"
+  #   next_hop_type = "internet_gateway"
+  #   next_hop_name = "igw"
+  # },
   att-app-tgw = {
     name          = "att-app-tgw"
     vpc_name      = "att-vpc"
@@ -45,7 +45,7 @@ attack-vpc-routes = {
     route_table   = "rt"
     prefix        = "0.0.0.0/0"
     next_hop_type = "gateway_load_balancer_endpoint"
-    next_hop_name = "gwlbe"
+    next_hop_name = "igw"  #"gwlbe"
   }
 }
 

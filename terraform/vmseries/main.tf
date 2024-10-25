@@ -59,6 +59,7 @@ module "vm-series" {
   subnet_ids        = module.security-vpc.subnet_ids
   security_groups   = module.security-vpc.security_groups
   bootstrap_options = var.firewall-bootstrap_options
+  authcodes         = var.authcodes
   global_tags       = var.global_tags
 }
 
