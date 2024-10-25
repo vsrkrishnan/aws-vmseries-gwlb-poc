@@ -10,7 +10,7 @@ variable "security_groups"      {}
 variable "vpc_name"             {}
 variable "vpc_id"               {}
 variable "bootstrap_options"    {}
-variable "authcodes"            {}
+# variable "authcodes"            {}
 
 variable "prefix-name-tag"      {}
 variable "global_tags"          {}

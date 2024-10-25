@@ -6,7 +6,7 @@ access-key      = ""
 secret-key      = ""
 region          = ""
 ssh-key-name    = ""                        # Update this as "qwikLABS-*" if deploying this on QwikLabs portal.
-authcodes       = ""
+# authcodes       = ""
 
 prefix-name-tag     = "demo-"               # Feel free to modify this if required. This prefix is just meant to make the lab resources identifiable
 global_tags         = {
