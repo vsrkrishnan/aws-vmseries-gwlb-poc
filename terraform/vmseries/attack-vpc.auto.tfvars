@@ -67,11 +67,6 @@ attack-vpc-security-groups = [
         description = "Permit Port 22 Public"
         type        = "ingress", from_port = "22", to_port = "22", protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
-      },
-      {
-        description = "Permit ICMP Public"
-        type        = "ingress", from_port = "0", to_port = "0", protocol = "icmp"
-        cidr_blocks = ["10.1.0.0/16"]
       }
     ]
   }
