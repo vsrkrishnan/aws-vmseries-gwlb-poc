@@ -85,7 +85,7 @@ resource "aws_s3_bucket_object" "license" {
   key    = "license/authcodes"
   source = "/dev/null"    # "../modules/bootstrap_files/authcodes"
 
-  depends_on = [ local_file.authcodes ]
+  # depends_on = [ local_file.authcodes ]
 }
 
 resource "aws_s3_bucket_object" "content" {
