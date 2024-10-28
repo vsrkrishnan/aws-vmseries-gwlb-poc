@@ -96,7 +96,7 @@ resource "aws_s3_bucket_object" "content" {
 }
 
 resource "aws_iam_role" "bootstrap_role" {
-  name = "ngfw_bootstrap_role"
+  name = "${var.prefix-name-tag}ngfw_bootstrap_role"
 
   assume_role_policy = <<EOF
 {
@@ -115,7 +115,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "bootstrap_policy" {
-  name = "ngfw_bootstrap_policy"
+  name = "${var.prefix-name-tag}ngfw_bootstrap_policy"
   role = "${aws_iam_role.bootstrap_role.id}"
 
   policy = <<EOF
@@ -138,7 +138,7 @@ EOF
 }
 
 resource "aws_iam_instance_profile" "bootstrap_profile" {
-  name = "ngfw_bootstrap_profile"
+  name = "${var.prefix-name-tag}ngfw_bootstrap_profile"
   role = aws_iam_role.bootstrap_role.name
   path = "/"
 }
