@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<config version="10.2.0" urldb="paloaltonetworks">
+<config version="11.2.0" urldb="paloaltonetworks" detail-version="11.2.0">
   <devices>
     <entry name="localhost.localdomain">
       <network>
@@ -405,76 +405,7 @@
           <schedule/>
           <rulebase>
             <security>
-              <rules>
-                <entry name="allow-all" uuid="4b0f7676-be64-4007-a31f-b1d6c1ec3dba">
-                  <to loc="shared">
-                    <member loc="shared">any</member>
-                  </to>
-                  <from loc="shared">
-                    <member loc="shared">any</member>
-                  </from>
-                  <source loc="shared">
-                    <member loc="shared">any</member>
-                  </source>
-                  <destination loc="shared">
-                    <member loc="shared">any</member>
-                  </destination>
-                  <source-user loc="shared">
-                    <member loc="shared">any</member>
-                  </source-user>
-                  <category loc="shared">
-                    <member loc="shared">any</member>
-                  </category>
-                  <application loc="shared">
-                    <member loc="shared">any</member>
-                  </application>
-                  <service loc="shared">
-                    <member loc="shared">any</member>
-                  </service>
-                  <source-hip loc="shared">
-                    <member loc="shared">any</member>
-                  </source-hip>
-                  <destination-hip loc="shared">
-                    <member loc="shared">any</member>
-                  </destination-hip>
-                  <action loc="shared">allow</action>
-                  <log-setting loc="shared">IoT Security Default Profile</log-setting>
-                </entry>
-                <entry name="explicit-deny" uuid="fbb7dcca-418b-4c07-908f-874d38b08f1e">
-                  <to loc="shared">
-                    <member loc="shared">any</member>
-                  </to>
-                  <from loc="shared">
-                    <member loc="shared">any</member>
-                  </from>
-                  <source loc="shared">
-                    <member loc="shared">any</member>
-                  </source>
-                  <destination loc="shared">
-                    <member loc="shared">any</member>
-                  </destination>
-                  <source-user loc="shared">
-                    <member loc="shared">any</member>
-                  </source-user>
-                  <category loc="shared">
-                    <member loc="shared">any</member>
-                  </category>
-                  <application loc="shared">
-                    <member loc="shared">any</member>
-                  </application>
-                  <service loc="shared">
-                    <member loc="shared">any</member>
-                  </service>
-                  <source-hip loc="shared">
-                    <member loc="shared">any</member>
-                  </source-hip>
-                  <destination-hip loc="shared">
-                    <member loc="shared">any</member>
-                  </destination-hip>
-                  <action loc="shared">deny</action>
-                  <log-setting loc="shared">IoT Security Default Profile</log-setting>
-                </entry>
-              </rules>
+              <rules/>
             </security>
             <default-security-rules>
               <rules/>
@@ -510,11 +441,7 @@
               <rules/>
             </dos>
           </rulebase>
-          <address>
-            <entry name="VulnerableAPP" loc="shared">
-              <ip-netmask loc="shared">10.1.1.100</ip-netmask>
-            </entry>
-          </address>
+          <address/>
           <address-group/>
           <external-list/>
           <region/>
@@ -532,122 +459,9 @@
           </threats>
           <profiles>
             <virus/>
-            <spyware>
-              <entry name="Log4j-Outbound-AntiSpyware" loc="shared">
-                <botnet-domains loc="shared">
-                  <lists loc="shared">
-                    <entry name="default-paloalto-dns" loc="shared">
-                      <action loc="shared">
-                        <sinkhole loc="shared"/>
-                      </action>
-                      <packet-capture loc="shared">disable</packet-capture>
-                    </entry>
-                  </lists>
-                  <dns-security-categories loc="shared">
-                    <entry name="pan-dns-sec-cc" loc="shared">
-                      <log-level loc="shared">default</log-level>
-                      <action loc="shared">default</action>
-                      <packet-capture loc="shared">disable</packet-capture>
-                    </entry>
-                    <entry name="pan-dns-sec-ddns" loc="shared">
-                      <log-level loc="shared">default</log-level>
-                      <action loc="shared">default</action>
-                      <packet-capture loc="shared">disable</packet-capture>
-                    </entry>
-                    <entry name="pan-dns-sec-grayware" loc="shared">
-                      <log-level loc="shared">default</log-level>
-                      <action loc="shared">default</action>
-                      <packet-capture loc="shared">disable</packet-capture>
-                    </entry>
-                    <entry name="pan-dns-sec-malware" loc="shared">
-                      <log-level loc="shared">default</log-level>
-                      <action loc="shared">default</action>
-                      <packet-capture loc="shared">disable</packet-capture>
-                    </entry>
-                    <entry name="pan-dns-sec-parked" loc="shared">
-                      <log-level loc="shared">default</log-level>
-                      <action loc="shared">default</action>
-                      <packet-capture loc="shared">disable</packet-capture>
-                    </entry>
-                    <entry name="pan-dns-sec-phishing" loc="shared">
-                      <log-level loc="shared">default</log-level>
-                      <action loc="shared">default</action>
-                      <packet-capture loc="shared">disable</packet-capture>
-                    </entry>
-                    <entry name="pan-dns-sec-proxy" loc="shared">
-                      <log-level loc="shared">default</log-level>
-                      <action loc="shared">default</action>
-                      <packet-capture loc="shared">disable</packet-capture>
-                    </entry>
-                    <entry name="pan-dns-sec-recent" loc="shared">
-                      <log-level loc="shared">default</log-level>
-                      <action loc="shared">default</action>
-                      <packet-capture loc="shared">disable</packet-capture>
-                    </entry>
-                  </dns-security-categories>
-                  <sinkhole loc="shared">
-                    <ipv4-address loc="shared">pan-sinkhole-default-ip</ipv4-address>
-                    <ipv6-address loc="shared">::1</ipv6-address>
-                  </sinkhole>
-                </botnet-domains>
-                <rules loc="shared">
-                  <entry name="critical" loc="shared">
-                    <action loc="shared">
-                      <default loc="shared"/>
-                    </action>
-                    <severity loc="shared">
-                      <member loc="shared">critical</member>
-                      <member loc="shared">high</member>
-                    </severity>
-                    <threat-name loc="shared">any</threat-name>
-                    <category loc="shared">any</category>
-                    <packet-capture loc="shared">disable</packet-capture>
-                  </entry>
-                </rules>
-                <mica-engine-spyware-enabled loc="shared">
-                  <entry name="HTTP Command and Control detector" loc="shared">
-                    <inline-policy-action loc="shared">alert</inline-policy-action>
-                  </entry>
-                  <entry name="HTTP2 Command and Control detector" loc="shared">
-                    <inline-policy-action loc="shared">alert</inline-policy-action>
-                  </entry>
-                  <entry name="SSL Command and Control detector" loc="shared">
-                    <inline-policy-action loc="shared">alert</inline-policy-action>
-                  </entry>
-                  <entry name="Unknown-TCP Command and Control detector" loc="shared">
-                    <inline-policy-action loc="shared">alert</inline-policy-action>
-                  </entry>
-                  <entry name="Unknown-UDP Command and Control detector" loc="shared">
-                    <inline-policy-action loc="shared">alert</inline-policy-action>
-                  </entry>
-                </mica-engine-spyware-enabled>
-              </entry>
-            </spyware>
+            <spyware/>
             <vulnerability/>
-            <url-filtering>
-              <entry name="Outbound-URL" loc="shared">
-                <credential-enforcement loc="shared">
-                  <mode loc="shared">
-                    <disabled loc="shared"/>
-                  </mode>
-                  <log-severity loc="shared">medium</log-severity>
-                  <block loc="shared">
-                    <member loc="shared">grayware</member>
-                    <member loc="shared">hacking</member>
-                    <member loc="shared">malware</member>
-                    <member loc="shared">phishing</member>
-                    <member loc="shared">private-ip-addresses</member>
-                  </block>
-                </credential-enforcement>
-                <block loc="shared">
-                  <member loc="shared">grayware</member>
-                  <member loc="shared">hacking</member>
-                  <member loc="shared">malware</member>
-                  <member loc="shared">phishing</member>
-                  <member loc="shared">private-ip-addresses</member>
-                </block>
-              </entry>
-            </url-filtering>
+            <url-filtering/>
             <custom-url-category/>
             <file-blocking/>
             <data-filtering/>
